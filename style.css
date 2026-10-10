@@ -1,0 +1,285 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #080b14;
+    --card: #111624;
+    --display: #0b101c;
+    --text: #f4f6ff;
+    --muted: #8993aa;
+    --border: rgba(255, 255, 255, 0.07);
+    --purple: #8b5cf6;
+    --blue: #5b8cff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(91, 140, 255, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(139, 92, 246, 0.14),
+            transparent 35%
+        ),
+        var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+button {
+    font: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 390px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    background: linear-gradient(145deg, #141a2a, #0d111c);
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.45),
+        0 0 45px rgba(91, 140, 255, 0.05);
+}
+
+/* HEADER */
+
+.calculator-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.eyebrow {
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 7px;
+}
+
+.calculator-header h1 {
+    font-size: 24px;
+    letter-spacing: -1px;
+}
+
+.calculator-header h1 span {
+    color: var(--purple);
+}
+
+.status-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #55e6ad;
+    box-shadow: 0 0 15px #55e6ad80;
+}
+
+/* DISPLAY */
+
+.display {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 20px 17px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    background: var(--display);
+    overflow: hidden;
+}
+
+.display-label {
+    width: 100%;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    margin-bottom: 17px;
+    text-align: left;
+}
+
+.expression {
+    width: 100%;
+    color: #aab4cb;
+    font-size: 16px;
+    text-align: right;
+    min-height: 23px;
+    overflow-wrap: anywhere;
+}
+
+.result {
+    max-width: 100%;
+    margin-top: 6px;
+    font-size: clamp(30px, 8vw, 43px);
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    text-align: right;
+    overflow-wrap: anywhere;
+    color: var(--text);
+}
+
+/* KEYPAD */
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.key {
+    min-width: 0;
+    height: 61px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: #1a2030;
+    color: var(--text);
+    font-size: 19px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        transform 0.15s,
+        box-shadow 0.2s;
+}
+
+.key:hover {
+    background: #252e43;
+    transform: translateY(-2px);
+}
+
+.key:active {
+    transform: scale(0.94);
+}
+
+.key:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.key.function {
+    color: #a9a0ff;
+    background: #24213a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.key.function:hover {
+    background: #343052;
+}
+
+.key.operator {
+    color: #8cb0ff;
+    background: #19243a;
+    font-size: 23px;
+}
+
+.key.operator:hover {
+    background: #27395a;
+}
+
+.key.equals {
+    color: white;
+    border: none;
+    background: linear-gradient(135deg, #638bff, #935bfa);
+    box-shadow: 0 6px 20px rgba(111, 111, 255, 0.22);
+    font-size: 24px;
+}
+
+.key.equals:hover {
+    box-shadow: 0 8px 27px rgba(111, 111, 255, 0.4);
+    background: linear-gradient(135deg, #7ca0ff, #a474ff);
+}
+
+.key.zero {
+    grid-column: span 2;
+}
+
+/* FOOTER */
+
+.calculator-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+}
+
+.calculator-footer span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.calculator-footer i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #55e6ad;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 420px) {
+    body {
+        padding: 12px;
+    }
+
+    .calculator {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .keypad {
+        gap: 8px;
+    }
+
+    .key {
+        height: 56px;
+        border-radius: 12px;
+    }
+
+    .display {
+        min-height: 135px;
+        padding: 17px 13px;
+    }
+
+    .calculator-footer {
+        font-size: 7px;
+    }
+}
+
+@media (max-width: 330px) {
+    .calculator {
+        padding: 13px;
+    }
+
+    .key {
+        height: 49px;
+        font-size: 16px;
+    }
+
+    .calculator-footer {
+        flex-wrap: wrap;
+    }
+}
